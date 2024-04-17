@@ -9,6 +9,8 @@ djangorestframework = "*"
 psycopg2-binary = "*"
 pandas = "*"
 openpyxl = "*"
+django-environ = "*"
+gunicorn = "*"
 
 [dev-packages]
 
