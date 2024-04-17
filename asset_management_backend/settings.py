@@ -77,12 +77,8 @@ WSGI_APPLICATION = "asset_management_backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-# Load the environment variable DATABASE_URL
-DATABASE_URL = env('DATABASE_URL', default='DATABASE_URL'),
 
-DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
-}
+DATABASES = {"default": dj_database_url.config()}
 
 
 # Password validation
