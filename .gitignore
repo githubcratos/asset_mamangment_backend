@@ -1,3 +1,4 @@
 .env
 staticfiles
 .qr_code_image
+.qr_code_image_app

@@ -15,7 +15,7 @@ class AssetSerializer(serializers.ModelSerializer):
 
     def get_qr_code_url(self, obj):
         # return generate_qr_code(obj)
-        return f"https://res.cloudinary.com/edward-campbell/image/upload/v1713354321/asset-management/{obj.id}.png"
+        return f"https://res.cloudinary.com/edward-campbell/image/upload/v1713354321/asset-management1/{obj.id}.png"
 
 
 def generate_qr_code(obj):
