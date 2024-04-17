@@ -3,5 +3,5 @@ from .models import Asset
 from .serializers import AssetSerializer
 
 class AssetViewSet(viewsets.ModelViewSet):
-    queryset = Asset.objects.all()
+    queryset = Asset.objects.all().order_by('Department')
     serializer_class = AssetSerializer
