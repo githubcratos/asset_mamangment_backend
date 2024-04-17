@@ -6,5 +6,5 @@ from asset.views import get_asset_name
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('asset.urls')),
-    path('api/qr-code/<int:id>/', get_asset_name, name='asset-qr-code'),
+    path('qr-code/<int:id>/', get_asset_name, name='asset-qr-code'),
 ]
