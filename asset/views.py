@@ -1,11 +1,21 @@
 from collections import defaultdict
 
+from django.http import JsonResponse
 from rest_framework import viewsets, filters
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from .models import Asset
 from .serializers import AssetSerializer
 import requests
+
+
+@api_view(['GET'])
+def get_asset_name(request, id):
+    try:
+        asset = Asset.objects.get(pk=id)
+        return JsonResponse({'Asset name': asset.AssetName, "Category": asset.Category, "Department": asset.Department})
+    except Asset.DoesNotExist:
+        return JsonResponse({'error': 'Asset not found'}, status=404)
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
