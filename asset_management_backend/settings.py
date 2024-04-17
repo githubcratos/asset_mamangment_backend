@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-hedawi&i95=b5%7b$v56q#gcq$k@39pwm@k)nx=dn9vwp7v57k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["asset-mamangment-backend.onrender.com", "assetmanagement.com.ng", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["asset-mamangment-backend.onrender.com", "assetmanagement.com.ng", "localhost", "127.0.0.1", "app.assetmanagement.com.ng"]
 
 
 # Application definition

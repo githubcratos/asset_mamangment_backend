@@ -23,7 +23,7 @@ def generate_qr_code(obj):
     url = "https://qrcode-monkey.p.rapidapi.com/qr/custom"
 
     payload = {
-        "data": f"https://assetmanagement.com.ng/qr-code/{asset_id}",
+        "data": f"https://app.assetmanagement.com.ng/qr-code/{asset_id}",
         "config": {
             "body": "square",
             "eye": "frame3",
