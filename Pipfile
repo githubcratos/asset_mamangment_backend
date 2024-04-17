@@ -12,6 +12,8 @@ openpyxl = "*"
 django-environ = "*"
 gunicorn = "*"
 dj-database-url = "*"
+requests = "*"
+whitenoise = "*"
 
 [dev-packages]
 
