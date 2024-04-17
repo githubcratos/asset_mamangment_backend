@@ -11,6 +11,7 @@ pandas = "*"
 openpyxl = "*"
 django-environ = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
