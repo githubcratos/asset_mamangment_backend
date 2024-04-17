@@ -9,10 +9,26 @@ def generate_qr_code_url(obj):
 
 class AssetSerializer(serializers.ModelSerializer):
     qr_code_url = serializers.SerializerMethodField()
+    name_key = serializers.SerializerMethodField()
     class Meta:
         model = Asset
         fields = '__all__'
 
+    def get_name_key(self, obj):
+        # Static prefix
+        prefix = "NVRI"
+
+        # Helper function to get the initial of each word
+        def get_initials(text):
+            return ''.join([word[0].upper() for word in text.split() if word])
+
+        # Get initials for Department and Location
+        department_initials = get_initials(obj.Department) if obj.Department else ''
+        location_initials = get_initials(obj.Location) if obj.Location else ''
+
+        # Forming the code
+        key_name = f"{prefix}/{department_initials}/{location_initials}/{obj.id:04d}"  # Formats ID with leading zeros
+        return key_name
     def get_qr_code_url(self, obj):
         # return generate_qr_code(obj)
         return f"https://res.cloudinary.com/edward-campbell/image/upload/v1713354321/asset-management1/{obj.id}.png"
