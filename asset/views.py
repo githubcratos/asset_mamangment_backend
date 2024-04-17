@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 from django.http import JsonResponse
+from django.shortcuts import render
 from rest_framework import viewsets, filters
 from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
@@ -13,9 +14,11 @@ import requests
 def get_asset_name(request, id):
     try:
         asset = Asset.objects.get(pk=id)
-        return JsonResponse({'Asset name': asset.AssetName, "Category": asset.Category, "Department": asset.Department})
+        context = {'asset': asset}
+        return render(request, 'asset_detail.html', context)
     except Asset.DoesNotExist:
-        return JsonResponse({'error': 'Asset not found'}, status=404)
+        context = {'error': 'Asset not found'}
+        return render(request, 'asset_detail.html', context, status=404)
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
