@@ -18,6 +18,12 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()
+env_file = BASE_DIR / '.env'
+
+
+# Check if .env file exists
+if env_file.exists():
+    environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -43,6 +49,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "asset",
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +94,7 @@ WSGI_APPLICATION = "asset_management_backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 DATABASES = {"default": dj_database_url.config()}
 
 
