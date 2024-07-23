@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets, filters
 from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
@@ -12,13 +12,14 @@ import requests
 
 @api_view(['GET'])
 def get_asset_name(request, id):
-    try:
-        asset = Asset.objects.get(pk=id)
-        context = {'asset': asset}
-        return render(request, 'asset_detail.html', context)
-    except Asset.DoesNotExist:
-        context = {'error': 'Asset not found'}
-        return render(request, 'asset_detail.html', context, status=404)
+    return redirect(f'https://dashboard.assetmanagement.com.ng/qr-code/{id}/')
+    # try:
+    #     asset = Asset.objects.get(pk=id)
+    #     context = {'asset': asset}
+    #     return render(request, 'asset_detail.html', context)
+    # except Asset.DoesNotExist:
+    #     context = {'error': 'Asset not found'}
+    #     return render(request, 'asset_detail.html', context, status=404)
 
 class AssetViewSet(viewsets.ModelViewSet):
     queryset = Asset.objects.all()
